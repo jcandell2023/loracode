@@ -32,9 +32,9 @@ void loop() {
 
   if (ESerial.available() > 0) {
     Serial.println("Message received");
-    char curRead = ESerial.read();
+    char curRead = ESerial.peek();
     if (i < 100 && curRead != '~') {
-      input[i] = curRead;
+      input[i] = ESerial.read();
       i++;
     }
   } else if (i > 10) {
