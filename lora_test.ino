@@ -30,16 +30,15 @@ void setup() {
 
 void loop() {
 
-
   if (ESerial.available() > 0) {
     Serial.println("Message received");
-    if (i < 100) {
-      input[i] = ESerial.read();
+    char curRead = ESerial.read();
+    if (i < 100 && curRead != '~') {
+      input[i] = curRead;
       i++;
     }
-
-
   } else if (i > 10) {
     Serial.println(String(input));
   }
+  
 }
